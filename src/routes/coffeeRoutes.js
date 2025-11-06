@@ -8,19 +8,39 @@ import {
   updateCoffee,
   deleteCoffee
 } from '../controllers/coffeeController.js';
+import { protect, requireRole } from '../middlewares/authMiddleware.js';
 
-import { protect } from '../middlewares/authMiddleware.js';
+// 1. Importer
+import { 
+  coffeeRules, 
+  validateRequest 
+} from '../middlewares/validationMiddleware.js';
 
 const router = express.Router();
 
-// Routes publiques (lecture)
 router.get('/', getAllCoffees);
 router.get('/:id', getCoffeeById);
 
-// Routes protégées (Authentification requise)
-router.post('/', protect, createCoffee);
-router.put('/:id', protect, updateCoffee);
 
-router.delete('/:id', protect, requireRole('ADMIN'), deleteCoffee);
+router.post('/', 
+  protect, 
+  coffeeRules(), 
+  validateRequest, 
+  createCoffee
+);
+
+
+router.put('/:id', 
+  protect, 
+  coffeeRules(), 
+  validateRequest, 
+  updateCoffee
+);
+
+router.delete('/:id', 
+  protect, 
+  requireRole('ADMIN'), 
+  deleteCoffee
+);
 
 export default router;
