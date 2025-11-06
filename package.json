@@ -1,0 +1,33 @@
+{
+  "name": "imaginary-couscous",
+  "version": "1.0.0",
+  "description": "Express sécurisée (JWT + bcrypt + CORS + Rate limiting)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Erwan1202/imaginary-couscous.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Erwan1202/imaginary-couscous/issues"
+  },
+  "homepage": "https://github.com/Erwan1202/imaginary-couscous#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "express-validator": "^7.3.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.19.3",
+    "morgan": "^1.10.1"
+  }
+}
