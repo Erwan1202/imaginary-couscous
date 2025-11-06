@@ -153,7 +153,3 @@ npm test
 ## Contribuer
 
 Contributions bienvenues — ouvrez une issue ou une PR. Pour des modifications importantes, ouvrez d'abord une issue pour discuter.
-
----
-
-Si vous voulez, j'ajoute une exportation OpenAPI/Swagger minimale ou des collections Postman/Insomnia pour tester rapidement les endpoints.
