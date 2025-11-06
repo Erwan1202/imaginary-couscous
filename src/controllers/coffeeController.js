@@ -5,8 +5,26 @@ import Coffee from '../models/Coffee.js';
 
 export const getAllCoffees = async (req, res) => {
   try {
-    const coffees = await Coffee.find();
-    res.status(200).json(coffees);
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+
+    const skip = (page - 1) * limit;
+
+    const total = await Coffee.countDocuments();
+
+
+    const coffees = await Coffee.find()
+      .skip(skip)
+      .limit(limit);
+
+    res.status(200).json({
+      page: page,
+      limit: limit,
+      total: total,
+      totalPages: Math.ceil(total / limit),
+      data: coffees,
+    });
+
   } catch (error) {
     res.status(500).json({ error: "Erreur serveur." });
   }
