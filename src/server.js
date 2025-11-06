@@ -11,6 +11,7 @@ import rateLimit from 'express-rate-limit';
 import authRoutes from './routes/authRoutes.js';
 import coffeeRoutes from './routes/coffeeRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+
 dotenv.config();
 connectDB();
 
@@ -18,9 +19,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
-app.use(cors()); 
 app.use(morgan('dev'));
 app.use(express.json());
+
+app.use(cors({
+  origin: ["http://localhost:5173"],
+  credentials: true 
+})); 
+
+
 
 
 const globalLimiter = rateLimit({
